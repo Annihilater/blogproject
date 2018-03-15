@@ -66,6 +66,7 @@ class Post(models.Model):
     # 这里我们通过 ForeignKey 把文章和 User 关联了起来。
     # 因为我们规定一篇文章只能有一个作者，而一个作者可能会写多篇文章，因此这是一对多的关联关系，和 Category 类似。
     author = models.ForeignKey(User)
+    views = models.PositiveIntegerField(default=0)
 
     def __str__(self):
         return self.title
@@ -77,3 +78,8 @@ class Post(models.Model):
 
     class Meta:
         ordering = ['-created_time']
+
+    def increase_views(self):
+        self.views += 1
+        self.save(update_fields=['views'])
+
