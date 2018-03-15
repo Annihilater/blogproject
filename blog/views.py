@@ -2,10 +2,18 @@ import markdown
 from django.shortcuts import render, get_object_or_404
 from comments.forms import CommentForm
 from .models import Post, Category
+from django.views.generic import ListView
 
-def index(request):
-    post_list = Post.objects.all()
-    return render(request, 'blog/index.html', context={'post_list': post_list})
+
+class IndexView(ListView):
+    model = Post
+    template_name = 'blog/index.html'
+    context_object_name = 'post_list'
+
+
+# def index(request):
+#     post_list = Post.objects.all()
+#     return render(request, 'blog/index.html', context={'post_list': post_list})
 
 
 def detail(request, pk):
