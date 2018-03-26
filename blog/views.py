@@ -1,7 +1,7 @@
 import markdown
 from django.shortcuts import render, get_object_or_404
 from comments.forms import CommentForm
-from .models import Post, Category
+from .models import Post, Category, Tag
 from django.views.generic import ListView, DetailView
 
 
@@ -11,7 +11,7 @@ class IndexView(ListView):
     template_name = 'blog/index.html'
     context_object_name = 'post_list'
     # 指定 paginate_by 属性后开启分页功能，其值代表每一页包含多少篇文章
-    paginate_by = 1
+    paginate_by = 4
 
     def get_context_data(self, **kwargs):
         """
@@ -242,3 +242,13 @@ class ArchivesView(IndexView):
 #                                     created_time__month=month
 #                                     )
 #     return render(request, 'blog/index.html', context={'post_list': post_list})
+
+
+class TagView(ListView):
+    model = Post
+    template_name = 'blog/index.html'
+    context_object_nasme = 'post_list'
+
+    def get_queryset(self):
+        tag = get_object_or_404(Tag, pk=self.kwargs.get('pk'))
+        return super(TagView, self).get_queryset().filter(tags=tag)
