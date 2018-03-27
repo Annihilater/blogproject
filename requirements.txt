@@ -1,0 +1,8 @@
+certifi==2018.1.18
+Django==2.0.3
+django-haystack==2.8.0
+jieba==0.39
+Markdown==2.6.11
+Pygments==2.2.0
+pytz==2018.3
+Whoosh==2.7.4
