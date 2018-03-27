@@ -3,7 +3,7 @@
             {% block main %}
                 <article class="post post-1">
                     <header class="entry-header">
-                        <h1 class="entry-title">{{ post.pk }}</h1>
+                        <h1 class="entry-title">{{ post.title }}</h1>
                         <div class="entry-meta">
                             <span class="post-category"><a href="{% url 'blog:category' post.category.pk %}">{{ post.category.name }}</a></span>
                             <span class="post-date"><a href="#"><time class="entry-date" datetime="{{ post.created_time }}">{{ post.created_time }}</time></a></span>
