@@ -741,7 +741,7 @@ class WhooshSearchBackend(BaseSearchBackend):
             # Try to handle most built-in types.
             if isinstance(converted_value, (list, tuple, set, dict, six.integer_types, float, complex)):
                 return converted_value
-        except:
+        except BaseException:
             # If it fails (SyntaxError or its ilk) or we don't trust it,
             # continue on.
             pass

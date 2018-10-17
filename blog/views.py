@@ -8,7 +8,6 @@ from django.utils.text import slugify
 from django.db.models import Q
 
 
-
 class IndexView(ListView):
     model = Post
     template_name = 'blog/index.html'
@@ -153,7 +152,6 @@ class IndexView(ListView):
 #     return render(request, 'blog/index.html', context={'post_list': post_list})
 
 
-
 # 记得在顶部导入 DetailView
 class PostDetailView(DetailView):
     # 这些属性的含义和 ListView 是一样的
@@ -187,7 +185,7 @@ class PostDetailView(DetailView):
         post.body = md.convert(post.body)
         post.toc = md.toc
         return post
-        #只能在文章开头插入目录
+        # 只能在文章开头插入目录
         # post.body = markdown.markdown(post.body,
         #                               extensions=[
         #                                   'markdown.extensions.extra',
@@ -230,18 +228,17 @@ class PostDetailView(DetailView):
 #     return render(request, 'blog/detail.html', context={'post': post})
 
 
-
 class CategoryView(IndexView):
     def get_queryset(self):
         cate = get_object_or_404(Category, pk=self.kwargs.get('pk'))
         return super(CategoryView, self).get_queryset().filter(category=cate)
+
 
 # def category(request, pk):
 #     # 记得在开始部分导入 Category 类
 #     cate = get_object_or_404(Category, pk=pk)
 #     post_list = Post.objects.filter(category=cate)
 #     return render(request, 'blog/index.html', context={'post_list': post_list})
-
 
 
 class ArchivesView(IndexView):
@@ -251,6 +248,7 @@ class ArchivesView(IndexView):
         return super(ArchivesView, self).get_queryset().filter(created_time__year=year,
                                                                created_time__month=month
                                                                )
+
 
 # def archives(request, year, month):
 #     post_list = Post.objects.filter(created_time__year=year,
@@ -280,7 +278,3 @@ def search(request):
     post_list = Post.objects.filter(Q(title__icontains=q) | Q(body__icontains=q))
     return render(request, 'blog/index.html', {'error_msg': error_msg,
                                                'post_list': post_list})
-
-
-
-
