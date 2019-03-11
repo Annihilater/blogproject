@@ -1,8 +1,5 @@
-# 所有空行或者以注释符号 ＃ 开头的行都会被 Git 忽略
-# 可以使用标准的 glob 模式匹配
-# 匹配模式最后跟反斜杠（/）说明要忽略的是目录
-# 要忽略指定模式以外的文件或目录，可以在模式前加上感叹号（!）取反
-
+# Created by .ignore support plugin (hsz.mobi)
+### Python template
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -108,3 +105,4 @@ venv.bak/
 # mypy
 .mypy_cache/
 
+.vscode/
