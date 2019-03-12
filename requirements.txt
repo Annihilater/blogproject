@@ -1,9 +1,10 @@
 certifi==2018.11.29
-Django==2.0.3
+Django==2.1.7
 django-haystack==2.8.0
 jieba==0.39
 Markdown==2.6.11
 Pygments==2.2.0
+PyMySQL==0.9.3
 PySocks==1.6.8
 pytz==2018.3
 Whoosh==2.7.4
