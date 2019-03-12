@@ -19,7 +19,7 @@ class AllPostsRssFeed(Feed):
 
     # 聚合器中显示的内容条目的标题
     def item_title(self, item):
-        return '[%s] %s' % (item.category, item.title)
+        return "[%s] %s" % (item.category, item.title)
 
     # 聚合器中显示的内容条目的描述
     def item_description(self, item):

@@ -18,10 +18,9 @@ from django.contrib import admin
 from blog.feeds import AllPostsRssFeed
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'', include('blog.urls')),
-    url(r'', include('comments.urls')),
-    # 记得在顶部引入 AllPostsRssFeed
-    url(r'^all/rss/$', AllPostsRssFeed(), name='rss'),
-    url(r'^search/', include('haystack.urls')),
+    url(r"^admin/", admin.site.urls),
+    url(r"", include("blog.urls")),
+    url(r"", include("comments.urls")),
+    url(r"^all/rss/$", AllPostsRssFeed(), name="rss"),  # 记得在顶部引入 AllPostsRssFeed
+    url(r"^search/", include("haystack.urls")),
 ]
